@@ -1,39 +1,42 @@
 <template>
-<header>
-  <LogoPokemon></LogoPokemon>
-</header>
-
-
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <header>
+    <LogoPokemon></LogoPokemon>
+    <div class="c-pok">
+      <SinglePokemon v-for="pokemon in pokemons.results" :key="pokemon.name" :pokemonData="pokemon"> </SinglePokemon>
     </div>
   </header>
 
-  <main>
-    <TheWelcome />
-  </main> -->
+  <!-- <p v-for="pokemon in pokemons.results">
+    {{ pokemon.name }}
+  </p> -->
 </template>
 
 <script setup>
-import LogoPokemon from './components/Logo pokemon.vue';
+import LogoPokemon from './components/Logopokemon.vue';
+import SinglePokemon from './components/Pokemon.vue';
+import { ref } from 'vue';
+
+const pokemons = ref();
 
 const getPokemons = async function (limit = 15) {
-  const data = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`,
-  ).then((r) => r.json())
-}
+  const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`).then((r) => r.json());
+  // console.log(data);
 
-const pokemons = ref([]);
+  pokemons.value = data;
+  console.log(pokemons.value);
+};
 
+getPokemons();
 </script>
 
-<style scoped>
-.html {
+<style lang="scss">
+html {
   color: #fefefe;
   background: #303030;
   font-family: 'Work Sans', sans-serif;
 }
+
+// .c-pok {
+//   display: flex;
+// }
 </style>
