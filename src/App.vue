@@ -1,10 +1,10 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
+<header>
+  <LogoPokemon></LogoPokemon>
+</header>
+
+
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -14,34 +14,26 @@ import TheWelcome from './components/TheWelcome.vue'
 
   <main>
     <TheWelcome />
-  </main>
+  </main> -->
 </template>
 
+<script setup>
+import LogoPokemon from './components/Logo pokemon.vue';
+
+const getPokemons = async function (limit = 15) {
+  const data = await fetch(
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`,
+  ).then((r) => r.json())
+}
+
+const pokemons = ref([]);
+
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.html {
+  color: #fefefe;
+  background: #303030;
+  font-family: 'Work Sans', sans-serif;
 }
 </style>
