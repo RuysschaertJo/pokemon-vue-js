@@ -18,7 +18,7 @@ import { ref } from 'vue';
 
 const pokemons = ref();
 
-const getPokemons = async function (limit = 15) {
+const getPokemons = async function (limit = 20) {
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`).then((r) => r.json());
   // console.log(data);
 
@@ -36,7 +36,13 @@ html {
   font-family: 'Work Sans', sans-serif;
 }
 
-// .c-pok {
-//   display: flex;
-// }
+.c-pok {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100vh;
+
+  gap: 4rem;
+}
 </style>
