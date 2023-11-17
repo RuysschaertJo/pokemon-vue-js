@@ -2,12 +2,10 @@
   <header>
     <LogoPokemon></LogoPokemon>
     <div class="c-pok">
-      <SinglePokemon 
-      v-for="pokemon in pokemons.results" 
-      :key="pokemon.name" 
-      :pokemonData="pokemon"> 
-      <!-- key betekent dat het kan weten wat wat is.  -->
-    </SinglePokemon>
+      <LoadingSkeletons v-if="loading" :amount="20"></LoadingSkeletons>
+      <SinglePokemon v-else v-for="pokemon in pokemons.results" :key="pokemon.name" :pokemonData="pokemon">
+        <!-- key betekent dat het kan weten wat wat is.  -->
+      </SinglePokemon>
     </div>
   </header>
 
@@ -17,17 +15,20 @@
 </template>
 
 <script setup>
+import LoadingSkeletons from './components/LoadingSkeletons.vue';
 import LogoPokemon from './components/Logopokemon.vue';
 import SinglePokemon from './components/Pokemon.vue';
 import { ref } from 'vue';
 
 const pokemons = ref();
+const loading = ref(true);
 
 const getPokemons = async function (limit = 20) {
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`).then((r) => r.json());
   // console.log(data);
 
   pokemons.value = data;
+  loading.value = false;
   console.log(pokemons.value);
 };
 
