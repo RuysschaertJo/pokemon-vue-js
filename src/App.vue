@@ -2,7 +2,12 @@
   <header>
     <LogoPokemon></LogoPokemon>
     <div class="c-pok">
-      <SinglePokemon v-for="pokemon in pokemons.results" :key="pokemon.name" :pokemonData="pokemon"> </SinglePokemon>
+      <SinglePokemon 
+      v-for="pokemon in pokemons.results" 
+      :key="pokemon.name" 
+      :pokemonData="pokemon"> 
+      <!-- key betekent dat het kan weten wat wat is.  -->
+    </SinglePokemon>
     </div>
   </header>
 
@@ -39,10 +44,14 @@ html {
 .c-pok {
   display: flex;
   flex-wrap: wrap;
+  //align-items: baseline;
+  //Orgineel voor verschillende hoogtes;
   justify-content: space-between;
   margin: 0 auto;
   width: 100vh;
+  //max-width: 72rem;
+  //padding: 2rem;
 
-  gap: 4rem;
+  gap: 2rem;
 }
 </style>
