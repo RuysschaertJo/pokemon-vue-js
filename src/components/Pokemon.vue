@@ -62,9 +62,9 @@ const getPokemonImageUrl = function () {
 //Todo verberg de orginele checkbox.
 const showBack = ref(false);
 
-const checkFfront = function () {
-  inputTrue = true;
-};
+// const checkFfront = function () {
+//   inputTrue = true;
+// };
 </script>
 
 <style lang="scss">

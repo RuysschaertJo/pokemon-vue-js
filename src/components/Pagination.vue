@@ -25,3 +25,15 @@
 import { ChevronRight, ChevronLeft } from 'lucide-vue-next';
 
 </script>
+
+<style>
+.c-pages{
+  text-decoration: none;
+  color: white;
+
+  display: flex;
+  /* margin: 0 auto; */
+  margin: 2rem;
+  justify-content: center;
+}
+</style>

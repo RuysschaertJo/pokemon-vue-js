@@ -7,6 +7,7 @@
         <!-- key betekent dat het kan weten wat wat is.  -->
       </SinglePokemon>
     </div>
+    <Pagination></Pagination>
   </header>
 
   <!-- <p v-for="pokemon in pokemons.results">
@@ -18,12 +19,13 @@
 import LoadingSkeletons from './components/LoadingSkeletons.vue';
 import LogoPokemon from './components/Logopokemon.vue';
 import SinglePokemon from './components/Pokemon.vue';
+import Pagination from './components/Pagination.vue';
 import { ref } from 'vue';
 
 const pokemons = ref();
 const loading = ref(true);
 
-const getPokemons = async function (limit = 20) {
+const getPokemons = async function (limit = 12) {
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=0`).then((r) => r.json());
   // console.log(data);
 
